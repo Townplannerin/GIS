@@ -35,7 +35,7 @@
 			attribution: '<a href="https://twitter.com/Saikprajwal" title="A Map by Saikprajwal">Saikprajwal</a>'
 		}).addTo(m);
 
-		var shpfile = new L.Shapefile('leaflet/congress.zip', {
+		var shpfile = new L.Shapefile('congress.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
