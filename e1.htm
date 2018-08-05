@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html style="" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>
+		Preview
+	</title>
+	<link rel="stylesheet" href="Preview_files/leaflet.css">
+	<!--[if lte IE 8]>
+			<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+		<![endif]-->
+	<style>
+		html {
+			height: 100%
+		}
+
+		body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		#map {
+			height: 100%
+		}
+	</style>
+</head>
+	<div id="map"></div>
+	<script src="Preview_files/leaflet.js"></script>
+	<script src="Preview_files/catiline.js"></script>
+	<script src="Preview_files/leaflet.shpfile.js"></script>
+	<script>
+		var m = L.map('map').setView([42.09618442380296, -71.5045166015625], 8);
+		var watercolor = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '<a href="https://twitter.com/Saikprajwal" title="A Map by Saikprajwal">Saikprajwal</a>'
+		}).addTo(m);
+
+		var shpfile = new L.Shapefile('congress.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(m);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+	</script>
+
+
+
+</body></html>
