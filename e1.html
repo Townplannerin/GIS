@@ -27,29 +27,26 @@
 </head>
 	<div id="map"></div>
 	<script src="leaflet/leaflet.js"></script>
-	<script src="leaflet/catiline.js"></script>
-	<script src="leaflet/leaflet.shpfile.js"></script>
-	<script>
-		var m = L.map('map').setView([42.09618442380296, -71.5045166015625], 8);
-		var watercolor = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			attribution: '<a href="https://twitter.com/Saikprajwal" title="A Map by Saikprajwal">Saikprajwal</a>'
-		}).addTo(m);
-
-		var shpfile = new L.Shapefile('congress.zip', {
-			onEachFeature: function(feature, layer) {
-				if (feature.properties) {
-					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
-						return k + ": " + feature.properties[k];
-					}).join("<br />"), {
-						maxHeight: 200
-					});
-				}
-			}
-		});
-		shpfile.addTo(m);
-		shpfile.once("data:loaded", function() {
-			console.log("finished loaded shapefile");
-		});
-	</script>
+	<script src="leaflet/KML.js"></script>
+	<script language="javascript">
+      function init() {
+         var map = new L.Map('map');                       
+        
+      	 L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '<a href="https://twitter.com/Saikprajwal" title="A Map by Saikprajwal">Saikprajwal</a>',
+            maxZoom: 18
+         }).addTo(map);
+         map.attributionControl.setPrefix(''); // Don't show the 'Powered by Leaflet' text.
+                                                             
+         var kmlLayer = new L.KML("mapperz-kml-example.kml", {async: true});
+                                                              
+         kmlLayer.on("loaded", function(e) { 
+            map.fitBounds(e.target.getBounds());
+         });
+                                                
+         map.addLayer(kmlLayer);
+         
+      }
+   </script>
 </body>
 </html>
