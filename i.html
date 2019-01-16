@@ -4,11 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>MAP</title>
-
 <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/dijit/calcite.css">
 <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/css/esri.css">
 <script src="https://js.arcgis.com/3.24/"></script>
-
 <style>
 html, body, #map {
   padding: 0;
@@ -36,7 +34,6 @@ html, body, #map {
       z-index: 50;
 }
 </style>
-
 <script type="text/javascript">
 require([
 "esri/layers/ArcGISDynamicMapServiceLayer",
@@ -51,7 +48,7 @@ require([
       parser.parse();
       var map = new Map("map", {
       basemap: "streets",
-      center: [76.1846, 14.0473],
+      center: [77.3507, 12.9538],
       zoom: 16
       });
       var toggle = new BasemapToggle({
@@ -76,12 +73,10 @@ require([
     });
 </script>
 </head>
-
 <body>
   <div id="map"></div>
   <div id="search"></div>
   <div id="BasemapToggle"></div>
   <div id="LocateButton"></div>
 </body>
-
 </html>
