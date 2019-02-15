@@ -8,7 +8,6 @@
 <meta name="author" content="Saikprajwal">
 <title>Sample</title>
 
-
     <!-- Load Leaflet from CDN -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
     integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
@@ -91,7 +90,7 @@ L.Control.Coordinates = L.Control.extend({
 	}
 });
 </script>
-  <style>
+<style>
     body { margin:0; padding:0; }
     #map { position: absolute; top:0; bottom:0; right:0; left:0; }
 
@@ -138,25 +137,25 @@ var legend = L.control();
 var scale = L.control.scale();
          scale.addTo(map);
 
-	var GoogleStreet =
+var GoogleStreet =
           L.tileLayer('http://www.google.com/maps/vt?lyrs=m@189&gl=com&x={x}&y={y}&z={z}', {
             attribution: 'Map data &copy;2019 <a href="http://maps.google.com">Google</a> | Terms of Use',
             maxZoom: 21
           })
-        var GoogleSatellite =
+var GoogleSatellite =
           L.tileLayer('http://www.google.com/maps/vt?lyrs=s@189&gl=com&x={x}&y={y}&z={z}', {
             attribution: 'Map data &copy;2019 <a href="http://maps.google.com">Google</a> | Terms of Use',
             maxZoom: 21
           })
-        var GoogleHybrid =
+var GoogleHybrid =
           L.tileLayer('http://www.google.com/maps/vt?lyrs=s,h@189&gl=com&x={x}&y={y}&z={z}', {
             attribution: 'Map data &copy;2019 <a href="http://maps.google.com">Google</a> | Terms of Use',
             maxZoom: 21
           })
-        map.addLayer(GoogleStreet);
+map.addLayer(GoogleStreet);
 
-  var sslr = L.esri.tiledMapLayer({
-  url: 'https://maps.ksrsac.in/maps/rest/services/Cadastral/CadastralCache_State/MapServer'
+var sslr = L.esri.tiledMapLayer({
+url: 'https://maps.ksrsac.in/maps/rest/services/Cadastral/CadastralCache_State/MapServer'
 }).addTo(map);
 
 map.attributionControl.setPrefix('');
@@ -165,7 +164,7 @@ var baseMaps = {'GoogleStreet': GoogleStreet,
             'GoogleSatellite': GoogleSatellite,
             'GoogleHybrid': GoogleHybrid
         };
-        L.control.layers(baseMaps,{'Cadastral<img src="css/check.png" />': sslr,},{collapsed:true}).addTo(map);
+L.control.layers(baseMaps,{'Cadastral<img src="css/check.png" />': sslr,},{collapsed:true}).addTo(map);
 
 var c = new L.Control.Coordinates();
 c.addTo(map);
@@ -188,16 +187,15 @@ var measureControl = new L.Control.Measure({
             primaryAreaUnit: 'sqmeters',
             secondaryAreaUnit: 'acres'
         });
-        measureControl.addTo(map);
+measureControl.addTo(map);
 
 var osmGeocoder = new L.Control.OSMGeocoder({
             collapsed: true,
             position: 'topright',
             text: 'Search',
         });
-        osmGeocoder.addTo(map);
+osmGeocoder.addTo(map);
 
 </script>
-
 </body>
 </html>
