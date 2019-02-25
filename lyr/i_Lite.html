@@ -21,76 +21,18 @@
   </style>
 </head>
 <body>
-  <style>
-  #basemaps-wrapper {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 400;
-    background: white;
-    padding: 10px;
-  }
-  #basemaps {
-    margin-bottom: 5px;
-  }
-</style>
 <div id="map"></div>
-  <div id="basemaps-wrapper" class="leaflet-bar">
-  <select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)">
-    <option value="Topographic">Topographic</option>
-    <option value="Streets">Streets</option>
-    <option value="NationalGeographic">National Geographic</option>
-    <option value="Oceans">Oceans</option>
-    <option value="Gray">Gray</option>
-    <option value="DarkGray">Dark Gray</option>
-    <option value="Imagery">Imagery</option>
-    <option value="ImageryClarity">Imagery (Clarity)</option>
-    <option value="ImageryFirefly">Imagery (Firefly)</option>
-    <option value="ShadedRelief">Shaded Relief</option>
-    <option value="Physical">Physical</option>
-  </select>
-</div>
+  
 <script>
   var map = L.map("map").setView([14.0473, 76.1846], 10);
   
-  L.esri.basemapLayer("Streets").addTo(map);
-  var layerLabels;
-
-  function setBasemap(basemap) {
-    if (layer) {
-      map.removeLayer(layer);
-    }
-
-    layer = L.esri.basemapLayer(basemap);
-
-    map.addLayer(layer);
-
-    if (layerLabels) {
-      map.removeLayer(layerLabels);
-    }
-
-    if (basemap === 'ShadedRelief'
-     || basemap === 'Oceans'
-     || basemap === 'Gray'
-     || basemap === 'DarkGray'
-     || basemap === 'Terrain'
-   ) {
-      layerLabels = L.esri.basemapLayer(basemap + 'Labels');
-      map.addLayer(layerLabels);
-    } else if (basemap.includes('Imagery')) {
-      layerLabels = L.esri.basemapLayer('ImageryLabels');
-      map.addLayer(layerLabels);
-    }
-  }
-
-  function changeBasemap(basemaps){
-    var basemap = basemaps.value;
-    setBasemap(basemap);
-  }
+  L.esri.basemapLayer("hybrid").addTo(map);
   
   L.esri.tiledMapLayer({
   url: 'https://maps.ksrsac.in/maps/rest/services/Cadastral/CadastralCache_State/MapServer'
 }).addTo(map);
+  
+map.attributionControl.setPrefix('');
 </script>
 </body>
 </html>
