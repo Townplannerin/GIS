@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Web application">
 <meta name="author" content="Saikprajwal">
-<title>Sample</title>
+<title>LPA</title>
 	
     <!-- Load Leaflet from CDN -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
@@ -52,6 +52,14 @@ map.attributionControl.setPrefix('');
 var baseMaps = {'GoogleSatellite': GoogleSatellite
         };
 L.control.layers(baseMaps,{'Map': mytile,},{collapsed:true}).addTo(map);
+
+var legend = L.control();
+	legend.onAdd = function (map) {
+		div = L.DomUtil.create( 'div', 'info legend' );
+		div.innerHTML = '<h4><b>LPA</b></h4>' +  ('To Verify');
+		return div;
+	};
+	legend.addTo(map);
 </script>
 </body>
 </html>
