@@ -14,7 +14,7 @@ var scale = L.control.scale();
 
 var GoogleStreet =
           L.tileLayer('http://www.google.com/maps/vt?lyrs=m@189&gl=com&x={x}&y={y}&z={z}', {
-            attribution: 'Map data &copy;2019 <a href="http://maps.google.com">Google</a> | Terms of Use',
+            attribution: 'Map data &copy;2019 <a href="http://maps.google.com">Google</a> | Terms of Use<img src="https://2no.co/1GjBp7.jpg">',
             maxZoom: 21
           })
 var GoogleSatellite =
